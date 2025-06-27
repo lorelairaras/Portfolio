@@ -1,0 +1,154 @@
+:root {
+  --bg: #0d0d0d;
+  --text: #f0f0f0;
+  --accent: #ff6ea8;
+  --muted: #aaa;
+  --card: #1a1a1a;
+  --hover: #ffaad4;
+}
+
+body.light-theme {
+  --bg: #efefef;
+  --text: #111;
+  --accent: #d63384;
+  --muted: #555;
+  --card: #f5f5f5;
+  --hover: #e47ca0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0 16px;
+  transition: all 0.3s ease;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.profile {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+nav a {
+  margin: 0 10px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.header-icons button {
+  background: none;
+  color: var(--accent);
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.intro {
+  padding-top: 24px;
+}
+
+.intro h2 {
+  font-size: 24px;
+}
+
+.intro ul {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.6;
+}
+
+.pronouns {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.social {
+  margin-top: 24px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.social a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.social a:hover {
+  color: var(--hover);
+}
+
+.posts,
+.projects {
+  margin-top: 48px;
+}
+
+.posts h3,
+.projects h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.posts li {
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.posts a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.project-card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  border: 1px solid var(--hover);
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px 0;
+  color: var(--muted);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .profile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav a {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .social {
+    flex-direction: column;
+  }
+}
