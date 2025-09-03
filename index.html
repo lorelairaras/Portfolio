@@ -3,70 +3,154 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Lorelai Raras</title>
+      <title>Lorelai Raras - Portfolio</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header>
-      <div class="profile">
-        <img src="assets/logo.png" alt="Lorelai Avatar" class="avatar" />
-        <div>
-          <h1>rawriewashere :3</h1>
-          <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-          </nav>
+    <div class="container">
+      <header>
+        <div class="profile">
+          <img src="assets/logo.png" alt="Lorelai Avatar" class="avatar" />
+          <div>
+            <h1>Lorelai Mei Raras</h1>
+            <nav>
+              <a href="#about">About</a>
+              <a href="#skills">Skills</a>
+              <a href="#projects">Projects</a>
+              <a href="#contact">Contact</a>
+            </nav>
+          </div>
         </div>
-      </div>
-      <div class="header-icons">
-        <button id="theme-toggle">🌙</button>
-      </div>
-    </header>
-
-    <main>
-      <section class="intro">
-        <h2>Hi, I'm</h2>
-        <ul>
-          <li><span>(en)</span> <strong>Lorelai Raras</strong></li>
-          <li><span>(tl)</span> <strong>Lo-re-lai Ra-ras</strong></li>
-          <li><span>(jp)</span> <strong>ロレライ・ララス</strong></li>
-        </ul>
-        <p class="pronouns">(she/her)</p>
-        <p>Information Technology student at Saint Louis University.</p>
-      </section>
-
-      <section class="social">
-        <a href="#" title="GitHub">🐱 GitHub</a>
-        <a href="#" title="Email">📧 Email</a>
-        <a href="#" title="Discord">💬 LinkedIn</a>
-      </section>
-
-      <section class="posts">
-        <h3>Posts</h3>
-        <ul>
-          <li><span>Jun 2025</span> <a href="#">My Final Year Projects</a></li>
-          <li>
-            <span>Mar 2025</span> <a href="#">How I Made This Portfolio</a>
-          </li>
-        </ul>
-      </section>
-
-      <section class="projects">
-        <h3>Projects</h3>
-        <div class="project-card">
-          💖 <strong>LoreBlog</strong><br />A personal blogging template
+        <div class="header-icons">
+          <button id="theme-toggle">🌙</button>
         </div>
-        <div class="project-card">
-          🎮 <strong>SlayCats</strong><br />Mini 2D shooter
-        </div>
-      </section>
-    </main>
+      </header>
 
-    <footer>
-      <p>© 2025 Lorelai Raras</p>
-    </footer>
+      <main>
+        <section class="intro" id="about">
+          <h2>Hi, I'm</h2>
+          <ul>
+            <li><span>(en)</span> <strong>Lorelai Raras</strong></li>
+            <li><span>(tl)</span> <strong>Lo-re-lai Ra-ras</strong></li>
+            <li><span>(jp)</span> <strong>ロレライ・ララス</strong></li>
+          </ul>
+          <p class="pronouns">(she/her)</p>
+          <p>
+            Information Technology student at Saint Louis University with expertise in web development, data analysis, and cloud platforms. Passionate
+            about creating efficient, user-friendly solutions to complex problems.
+          </p>
+        </section>
+
+        <section id="skills">
+          <h3>Technical Skills</h3>
+          <div class="skills-container">
+            <div class="skill-category">
+              <h4><i class="fas fa-code"></i> Programming</h4>
+              <ul class="skills-list">
+                <li><i class="fab fa-js"></i> JavaScript</li>
+                <li><i class="fab fa-python"></i> Python</li>
+                <li><i class="fas fa-code"></i> HTML/CSS</li>
+                <li><i class="fas fa-database"></i> MySQL</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h4><i class="fas fa-tools"></i> Frameworks & Tools</h4>
+              <ul class="skills-list">
+                <li><i class="fab fa-react"></i> React</li>
+                <li><i class="fab fa-git-alt"></i> Git/GitHub</li>
+                <li><i class="fas fa-wind"></i> Tailwind CSS</li>
+                <li><i class="fas fa-bolt"></i> Vite</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h4><i class="fas fa-cloud"></i> Cloud & Platforms</h4>
+              <ul class="skills-list">
+                <li><i class="fab fa-aws"></i> AWS</li>
+                <li><i class="fab fa-google"></i> Google Cloud</li>
+                <li><i class="fab fa-microsoft"></i> Azure</li>
+                <li><i class="fas fa-network-wired"></i> Cisco Packet Tracer</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h4><i class="fas fa-pencil-ruler"></i> Design & Productivity</h4>
+              <ul class="skills-list">
+                <li><i class="fab fa-figma"></i> Figma</li>
+                <li><i class="fas fa-chart-line"></i> Lucidchart</li>
+                <li><i class="fas fa-paint-brush"></i> Canva</li>
+                <li><i class="fas fa-file-alt"></i> Microsoft Office</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="social" id="contact">
+          <a href="https://github.com/lorelairaras" title="GitHub"><i class="fab fa-github"></i> GitHub</a>
+          <a href="mailto:lorelairaras@gmail.com" title="Email"><i class="fas fa-envelope"></i> Email</a>
+          <a href="https://linkedin.com/in/lorelai-raras/" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="tel:+639622558343" title="Phone"><i class="fas fa-phone"></i> Call Me</a>
+        </section>
+
+        <section class="posts">
+          <h3>Latest Posts</h3>
+          <ul>
+            <li><span>Jun 2025</span> <a href="#">My Final Year Projects</a></li>
+            <li><span>Mar 2025</span> <a href="#">How I Made This Portfolio</a></li>
+            <li><span>Jan 2025</span> <a href="#">Getting Started with Cloud Computing</a></li>
+          </ul>
+        </section>
+
+        <section id="projects">
+          <h3>Projects</h3>
+          <div class="projects-grid">
+            <div class="project-card">
+              <h4>💖 LoreBlog</h4>
+              <p>A personal blogging template built with React and Tailwind CSS. Features responsive design, dark mode, and markdown support.</p>
+              <div class="tech-stack">
+                <small>React · Tailwind CSS · Vite</small>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <h4>🎮 SlayCats</h4>
+              <p>Mini 2D shooter game developed with JavaScript. Implemented sprite animation, collision detection, and score tracking.</p>
+              <div class="tech-stack">
+                <small>JavaScript · HTML5 Canvas</small>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <h4>🎫 Ticket Monitoring System</h4>
+              <p>Centralized platform for ticket allocation, sales tracking, and remittance logging for SLU Center for Culture and the Arts.</p>
+              <div class="tech-stack">
+                <small>React · MySQL · Node.js</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Education</h3>
+          <div class="education-item">
+            <h4>BS Information Technology</h4>
+            <p>Saint Louis University · Expected 2026</p>
+            <p>Relevant coursework: Web Development, Database Systems, Data Structures, Cloud Computing, Network Fundamentals</p>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          © 2025 Lorelai Mei Raras | <a href="mailto:lorelairaras@gmail.com" style="color: var(--primary)">lorelairaras@gmail.com</a> |
+          <a href="tel:+639622558343" style="color: var(--primary)">+63 962 255 8343</a>
+        </p>
+      </footer>
+    </div>
 
     <script src="script.js"></script>
+    </script>
   </body>
 </html>
