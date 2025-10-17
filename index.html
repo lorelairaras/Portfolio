@@ -3,153 +3,238 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Lorelai Raras - Portfolio</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="style.css">
+    <title>Lorelai Raras - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              pink: {
+                400: "#ff3399",
+                500: "#ff007f",
+                700: "#b00055",
+              },
+              neutral: {
+                50: "#f9fafb",
+                100: "#f3f4f6",
+                300: "#d1d5db",
+                600: "#4b5563",
+                700: "#374151",
+                900: "#1a1a1a",
+              },
+              gothic: {
+                dark: "#0b0b0f",
+                soft: "#141417",
+                mid: "#1f1f23",
+              },
+            },
+            fontFamily: {
+              gothic: ['"UnifrakturCook"', "cursive"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Pathway+Gothic+One&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="profile">
-          <img src="assets/logo.png" alt="Lorelai Avatar" class="avatar" />
+  <body class="bg-neutral-50 text-neutral-900 dark:bg-gothic-dark dark:text-gray-100 transition-colors duration-500">
+    <div class="container mx-auto max-w-6xl px-6">
+      <header class="flex flex-col md:flex-row justify-between items-center py-6 border-b border-pink-700/50">
+        <div class="flex items-center gap-4">
+          <img src="public/pfp.jpg" alt="Lorelai Avatar" class="w-16 h-16 rounded-full border-2 border-pink-700 shadow-lg" />
           <div>
-            <h1>Lorelai Mei Raras</h1>
-            <nav>
-              <a href="#about">About</a>
-              <a href="#skills">Skills</a>
-              <a href="#projects">Projects</a>
-              <a href="#contact">Contact</a>
+            <h1 class="font-gothic text-3xl text-pink-500 tracking-wider">Lorelai Mei Raras</h1>
+            <nav class="flex gap-6 text-sm text-neutral-700 dark:text-gray-400 mt-1">
+              <a href="#about" class="hover:text-pink-400 transition">About</a>
+              <a href="#skills" class="hover:text-pink-400 transition">Skills</a>
+              <a href="#projects" class="hover:text-pink-400 transition">Projects</a>
+              <a href="#certifications" class="hover:text-pink-400 transition">Certifications</a>
+              <a href="#contact" class="hover:text-pink-400 transition">Contact</a>
             </nav>
           </div>
         </div>
-        <div class="header-icons">
-          <button id="theme-toggle">🌙</button>
-        </div>
+        <button id="theme-toggle" class="mt-4 md:mt-0 text-xl border border-pink-700 rounded-full px-3 py-1 hover:bg-pink-700/20 transition">
+          🌙
+        </button>
       </header>
 
-      <main>
-        <section class="intro" id="about">
-          <h2>Hi, I'm</h2>
-          <ul>
-            <li><span>(en)</span> <strong>Lorelai Raras</strong></li>
-            <li><span>(tl)</span> <strong>Lo-re-lai Ra-ras</strong></li>
-            <li><span>(jp)</span> <strong>ロレライ・ララス</strong></li>
-          </ul>
-          <p class="pronouns">(she/her)</p>
-          <p>
-            Information Technology student at Saint Louis University with expertise in web development, data analysis, and cloud platforms. Passionate
-            about creating efficient, user-friendly solutions to complex problems.
-          </p>
-        </section>
+      <section id="hero" class="mt-12 space-y-4">
+        <h2 class="font-gothic text-5xl text-pink-500 tracking-wide">Hi! I am</h2>
+        <p class="font-gothic text-4xl text-neutral-900 dark:text-gray-200">Lorelai Raras</p>
+        <div class="space-y-1 text-neutral-700 dark:text-gray-400">
+          <p>(en) Lorelai Raras</p>
+          <p>(tl) Lo-re-lai Ra-ras</p>
+          <p>(jp) ロレライ・ララス</p>
+          <p>(she/her)</p>
+        </div>
+        <div class="flex gap-4 mt-4">
+          <button id="hire-me" class="px-6 py-2 bg-pink-500 hover:bg-pink-700 text-white rounded-full transition shadow-lg flex items-center gap-2">
+            💌 Hire Me
+          </button>
+          <button
+            id="copy-email"
+            class="px-6 py-2 border border-pink-700 text-neutral-800 dark:text-gray-100 rounded-full hover:bg-pink-700/20 transition flex items-center gap-2"
+          >
+            📋 Copy Email
+          </button>
+        </div>
+        <p id="copy-msg" class="text-green-600 dark:text-green-400 mt-2 hidden">Email copied to clipboard!</p>
+      </section>
 
-        <section id="skills">
-          <h3>Technical Skills</h3>
-          <div class="skills-container">
-            <div class="skill-category">
-              <h4><i class="fas fa-code"></i> Programming</h4>
-              <ul class="skills-list">
-                <li><i class="fab fa-js"></i> JavaScript</li>
-                <li><i class="fab fa-python"></i> Python</li>
-                <li><i class="fas fa-code"></i> HTML/CSS</li>
-                <li><i class="fas fa-database"></i> MySQL</li>
-              </ul>
-            </div>
-
-            <div class="skill-category">
-              <h4><i class="fas fa-tools"></i> Frameworks & Tools</h4>
-              <ul class="skills-list">
-                <li><i class="fab fa-react"></i> React</li>
-                <li><i class="fab fa-git-alt"></i> Git/GitHub</li>
-                <li><i class="fas fa-wind"></i> Tailwind CSS</li>
-                <li><i class="fas fa-bolt"></i> Vite</li>
-              </ul>
-            </div>
-
-            <div class="skill-category">
-              <h4><i class="fas fa-cloud"></i> Cloud & Platforms</h4>
-              <ul class="skills-list">
-                <li><i class="fab fa-aws"></i> AWS</li>
-                <li><i class="fab fa-google"></i> Google Cloud</li>
-                <li><i class="fab fa-microsoft"></i> Azure</li>
-                <li><i class="fas fa-network-wired"></i> Cisco Packet Tracer</li>
-              </ul>
-            </div>
-
-            <div class="skill-category">
-              <h4><i class="fas fa-pencil-ruler"></i> Design & Productivity</h4>
-              <ul class="skills-list">
-                <li><i class="fab fa-figma"></i> Figma</li>
-                <li><i class="fas fa-chart-line"></i> Lucidchart</li>
-                <li><i class="fas fa-paint-brush"></i> Canva</li>
-                <li><i class="fas fa-file-alt"></i> Microsoft Office</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="social" id="contact">
-          <a href="https://github.com/lorelairaras" title="GitHub"><i class="fab fa-github"></i> GitHub</a>
-          <a href="mailto:lorelairaras@gmail.com" title="Email"><i class="fas fa-envelope"></i> Email</a>
-          <a href="https://linkedin.com/in/lorelai-raras/" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="tel:+639622558343" title="Phone"><i class="fas fa-phone"></i> Call Me</a>
-        </section>
-
-        <section class="posts">
-          <h3>Latest Posts</h3>
-          <ul>
-            <li><span>Jun 2025</span> <a href="#">My Final Year Projects</a></li>
-            <li><span>Sept 2025</span> <a href="#">How I Made This Portfolio</a></li>
-          </ul>
-        </section>
-
-        <section id="projects">
-          <h3>Projects</h3>
-          <div class="projects-grid">
-            <div class="project-card">
-              <h4>🎫 Ticket Monitoring System</h4>
-              <p>Centralized platform for ticket allocation, sales tracking, and remittance logging for SLU Center for Culture and the Arts.</p>
-              <div class="tech-stack">
-                <small>React · Tailwind CSS · MySQL · Node.js</small>
-              </div>
-            </div>
-
-             <div class="project-card">
-              <h4>💖 Frontend Mentor</h4>
-              <p>I learned multiple exercises, which helped me improve my layout skills, practice responsive design, and gain confidence in building modern UIs.</p>
-              <div class="tech-stack">
-                <small>HTML · CSS · Tailwind CSS · React · Vite</small>
-              </div>
-            </div>
-
-            <div class="project-card">
-              <h4>🎮 SlayCats</h4>
-              <p>Mini 2D shooter game developed with JavaScript. Implemented sprite animation, collision detection, and score tracking.</p>
-              <div class="tech-stack">
-                <small>JavaScript · HTML5 Canvas</small>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3>Education</h3>
-          <div class="education-item">
-            <h4>BS Information Technology</h4>
-            <p>Saint Louis University · Expected 2026</p>
-            <p>Relevant coursework: Web Development, Database Systems, Data Structures, Cloud Computing, Network Fundamentals</p>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <p>
-          © 2025 Lorelai Mei Raras | <a href="mailto:lorelairaras@gmail.com" style="color: var(--primary)">lorelairaras@gmail.com</a> |
-          <a href="tel:+639622558343" style="color: var(--primary)">+63 962 255 8343</a>
+      <section id="about" class="mt-16 space-y-6">
+        <h2 class="font-gothic text-4xl text-pink-500 tracking-wide">About Me</h2>
+        <p class="text-neutral-800 dark:text-gray-300 text-lg leading-relaxed">
+          I’m <strong>Lorelai Raras</strong>. I specialize in turning complex data into actionable insights to help businesses make smarter decisions.
+          I’m skilled at analyzing processes, identifying inefficiencies, and creating clear reports and dashboards that communicate findings
+          effectively. With strong problem-solving, organization, and collaboration skills, I aim to support teams in improving workflows, driving
+          results, and making data-driven decisions that have a real impact.
         </p>
-      </footer>
-    </div>
+      </section>
 
-    <script src="script.js"></script>
-    </script>
+      <section id="skills" class="mt-16">
+        <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Skills</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="flex items-center gap-2 text-pink-500 font-gothic text-2xl mb-4"><i class="fas fa-code"></i> Programming & Analysis</h4>
+            <ul class="space-y-2 text-neutral-700 dark:text-gray-300">
+              <li class="flex items-center gap-2"><i class="fab fa-js text-yellow-400"></i> JavaScript</li>
+              <li class="flex items-center gap-2"><i class="fab fa-python text-blue-400"></i> Python</li>
+              <li class="flex items-center gap-2"><i class="fas fa-database text-pink-500"></i> SQL / MySQL</li>
+              <li class="flex items-center gap-2"><i class="fas fa-chart-line text-green-500"></i> Power BI</li>
+              <li class="flex items-center gap-2"><i class="fas fa-file-excel text-green-600"></i> Excel / Google Sheets</li>
+            </ul>
+          </div>
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="flex items-center gap-2 text-pink-500 font-gothic text-2xl mb-4"><i class="fas fa-tools"></i> Frameworks & Tools</h4>
+            <ul class="space-y-2 text-neutral-700 dark:text-gray-300">
+              <li class="flex items-center gap-2"><i class="fab fa-react text-cyan-500"></i> React</li>
+              <li class="flex items-center gap-2"><i class="fab fa-git-alt text-orange-400"></i> Git / GitHub</li>
+              <li class="flex items-center gap-2"><i class="fas fa-wind text-blue-400"></i> Tailwind CSS</li>
+              <li class="flex items-center gap-2"><i class="fas fa-bolt text-yellow-400"></i> Vite</li>
+              <li class="flex items-center gap-2"><i class="fas fa-network-wired text-purple-400"></i> Cisco Packet Tracer</li>
+            </ul>
+          </div>
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="flex items-center gap-2 text-pink-500 font-gothic text-2xl mb-4"><i class="fas fa-pencil-ruler"></i> Design & Productivity</h4>
+            <ul class="space-y-2 text-neutral-700 dark:text-gray-300">
+              <li class="flex items-center gap-2"><i class="fab fa-figma text-pink-500"></i> Figma</li>
+              <li class="flex items-center gap-2"><i class="fas fa-chart-area text-green-500"></i> Lucidchart</li>
+              <li class="flex items-center gap-2"><i class="fas fa-paint-brush text-purple-500"></i> Canva</li>
+              <li class="flex items-center gap-2"><i class="fas fa-file-alt text-yellow-500"></i> MS Office / Google Workspace</li>
+              <li class="flex items-center gap-2"><i class="fas fa-tasks text-cyan-500"></i> Notion / Jira</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="mt-16">
+        <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Projects</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="text-pink-500 font-gothic text-xl mb-2">🎫 Ticket Monitoring System</h4>
+            <p class="text-neutral-800 dark:text-gray-300 mb-2">Centralized platform for ticket allocation, sales, and remittance.</p>
+            <p class="text-neutral-700 dark:text-gray-500 text-sm mb-4">
+              <strong>Problem:</strong> Manual tracking<br />
+              <strong>Action:</strong> Digital workflow<br />
+              <strong>Result:</strong> Improved accuracy
+            </p>
+            <div class="flex flex-wrap gap-2 text-neutral-700 dark:text-gray-400 text-sm">
+              <span>Vercel</span> · <span>React</span> · <span>Tailwind CSS</span> · <span>JavaScript</span> · <span>MySQL</span> ·
+              <span>Node.js</span>
+              <span class="px-3 py-1 bg-pink-100 dark:bg-pink-500/20 text-pink-600 dark:text-pink-400 rounded-full text-xs uppercase font-semibold">
+                Ongoing
+              </span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="text-pink-500 font-gothic text-xl mb-2">Frontend Mentor Challenges</h4>
+            <p class="text-neutral-800 dark:text-gray-300 mb-2">
+              Frontend Mentor challenges are realistic front-end development projects that help developers practice professional web design
+              implementation using HTML, CSS, and JavaScript.
+            </p>
+            <div class="flex flex-wrap gap-2 text-neutral-700 dark:text-gray-400 text-sm">
+              <span>HTML</span> · <span>CSS</span> · <span>JavaScript</span> · <span>Tailwind CSS</span> · <span>React</span> · <span>Vite</span>
+              <span class="px-3 py-1 bg-pink-100 dark:bg-pink-500/20 text-pink-600 dark:text-pink-400 rounded-full text-xs uppercase font-semibold">
+                Ongoing
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="certifications" class="mt-16">
+        <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Certifications</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="text-pink-500 font-gothic text-xl mb-2">IBM Introduction to Cloud</h4>
+            <p class="text-neutral-800 dark:text-gray-300 text-sm mb-2">Cloud computing, IaaS/PaaS/SaaS, DevOps, and security.</p>
+            <span class="text-neutral-600 dark:text-gray-400 text-sm">IBM Skills Network</span>
+          </div>
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="text-pink-500 font-gothic text-xl mb-2">IBM Data Privacy Fundamentals</h4>
+            <p class="text-neutral-800 dark:text-gray-300 text-sm mb-2">Data protection, compliance, and breach analysis.</p>
+            <span class="text-neutral-600 dark:text-gray-400 text-sm">IBM Skills Network</span>
+          </div>
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="text-pink-500 font-gothic text-xl mb-2">IBM Data Science 101</h4>
+            <p class="text-neutral-800 dark:text-gray-300 text-sm mb-2">Intro to data science, R/Python, and applications.</p>
+            <span class="text-neutral-600 dark:text-gray-400 text-sm">IBM Skills Network</span>
+          </div>
+          <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
+            <h4 class="text-pink-500 font-gothic text-xl mb-2">Google Analytics Certification</h4>
+            <p class="text-neutral-800 dark:text-gray-300 text-sm mb-2">GA4 tracking, setup, and performance insights.</p>
+            <span class="text-neutral-600 dark:text-gray-400 text-sm">Google Skillshop (2025–2026)</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="mt-16">
+        <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Contact</h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <a
+            href="mailto:lorelairaras@gmail.com"
+            class="flex items-center gap-2 justify-center bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-4 hover:bg-neutral-100 dark:hover:bg-[#16161e] transition shadow-lg hover:scale-105"
+          >
+            <i class="fas fa-envelope text-pink-500"></i> Email
+          </a>
+          <a
+            href="tel:+639622558343"
+            class="flex items-center gap-2 justify-center bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-4 hover:bg-neutral-100 dark:hover:bg-[#16161e] transition shadow-lg hover:scale-105"
+          >
+            <i class="fas fa-phone text-pink-500"></i> Call Me
+          </a>
+          <a
+            href="https://github.com/lorelairaras"
+            target="_blank"
+            class="flex items-center gap-2 justify-center bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-4 hover:bg-neutral-100 dark:hover:bg-[#16161e] transition shadow-lg hover:scale-105"
+          >
+            <i class="fab fa-github text-pink-500"></i> GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/lorelai-raras/"
+            target="_blank"
+            class="flex items-center gap-2 justify-center bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-4 hover:bg-neutral-100 dark:hover:bg-[#16161e] transition shadow-lg hover:scale-105"
+          >
+            <i class="fab fa-linkedin text-pink-500"></i> LinkedIn
+          </a>
+        </div>
+      </section>
+
+      <footer class="border-t border-pink-700/50 text-center py-6 text-sm text-neutral-600 dark:text-gray-400 mt-16">© 2025 Lorelai Mei Raras</footer>
+    </div>
+    <script src="./src/main.js"></script>
   </body>
 </html>
