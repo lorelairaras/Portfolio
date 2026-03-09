@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lorelai Raras - Portfolio</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,313 +14,752 @@
         extend: {
           colors: {
             pink: {
+              300: "#ff66b3",
               400: "#ff3399",
               500: "#ff007f",
               700: "#b00055",
             },
-            neutral: {
-              50: "#f9fafb",
-              100: "#f3f4f6",
-              300: "#d1d5db",
-              600: "#4b5563",
-              700: "#374151",
-              900: "#1a1a1a",
-            },
             gothic: {
-              dark: "#0b0b0f",
-              soft: "#141417",
-              mid: "#1f1f23",
+              dark: "#09090d",
+              soft: "#111117",
+              mid: "#1b1b22",
+              card: "#14141b",
             },
           },
           fontFamily: {
             gothic: ['"UnifrakturCook"', "cursive"],
             sans: ["Inter", "sans-serif"],
+            display: ['"Pathway Gothic One"', "sans-serif"],
+          },
+          boxShadow: {
+            glow: "0 0 30px rgba(255, 0, 127, 0.18)",
+            softpink: "0 10px 30px rgba(255, 0, 127, 0.12)",
+          },
+          animation: {
+            floaty: "floaty 6s ease-in-out infinite",
+            twinkle: "twinkle 4s ease-in-out infinite",
+            fadeUp: "fadeUp 0.9s ease forwards",
+            pulseGlow: "pulseGlow 3s ease-in-out infinite",
+          },
+          keyframes: {
+            floaty: {
+              "0%, 100%": { transform: "translateY(0px)" },
+              "50%": { transform: "translateY(-10px)" },
+            },
+            twinkle: {
+              "0%, 100%": { opacity: "0.25", transform: "scale(1)" },
+              "50%": { opacity: "0.9", transform: "scale(1.35)" },
+            },
+            fadeUp: {
+              "0%": { opacity: "0", transform: "translateY(24px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" },
+            },
+            pulseGlow: {
+              "0%,100%": { boxShadow: "0 0 0 rgba(255,0,127,0.0), 0 0 24px rgba(255,0,127,0.08)" },
+              "50%": { boxShadow: "0 0 0 rgba(255,0,127,0.0), 0 0 42px rgba(255,0,127,0.22)" },
+            },
           },
         },
       },
     };
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Pathway+Gothic+One&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pathway+Gothic+One&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./src/style.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(255, 0, 127, 0.05), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 102, 179, 0.05), transparent 22%),
+        radial-gradient(circle at bottom center, rgba(176, 0, 85, 0.08), transparent 28%),
+        #fdf7fb;
+      cursor: none;
+    }
+
+    html.dark body {
+      background:
+        radial-gradient(circle at top left, rgba(255, 0, 127, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 102, 179, 0.08), transparent 22%),
+        radial-gradient(circle at bottom center, rgba(176, 0, 85, 0.12), transparent 28%),
+        #09090d;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        cursor: auto;
+      }
+
+      .cursor-dot,
+      .cursor-ring,
+      .cursor-trail {
+        display: none !important;
+      }
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    html.dark .glass {
+      background: rgba(20, 20, 27, 0.72);
+    }
+
+    .sparkle {
+      position: absolute;
+      border-radius: 9999px;
+      background: rgba(255, 102, 179, 0.8);
+      box-shadow: 0 0 16px rgba(255, 102, 179, 0.55);
+      animation: twinkle 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 2rem 0 0;
+      color: rgba(255, 102, 179, 0.72);
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: "";
+      height: 1px;
+      width: 100px;
+      background: linear-gradient(to right, transparent, rgba(255, 102, 179, 0.65), transparent);
+    }
+
+    .hover-card {
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    }
+
+    .hover-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 18px 40px rgba(255, 0, 127, 0.14);
+      border-color: rgba(255, 102, 179, 0.4);
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+    }
+
+    html.dark .hero-grid {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    .text-gradient {
+      background: linear-gradient(90deg, #d9468b 0%, #ff3399 45%, #ff007f 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    html.dark .text-gradient {
+      background: linear-gradient(90deg, #ffd1e8 0%, #ff66b3 45%, #ff007f 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .badge-glow {
+      box-shadow: 0 0 0 1px rgba(255, 102, 179, 0.16), 0 0 18px rgba(255, 0, 127, 0.08);
+    }
+
+    .tool-icon {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .tool-icon:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 0 24px rgba(255, 0, 127, 0.18);
+      border-color: rgba(255, 102, 179, 0.45);
+    }
+
+    .floating-dock {
+      position: fixed;
+      top: 50%;
+      right: 22px;
+      transform: translateY(-50%);
+      z-index: 60;
+    }
+
+    @media (max-width: 1024px) {
+      .floating-dock {
+        display: none;
+      }
+    }
+
+    .cursor-dot,
+    .cursor-ring,
+    .cursor-trail {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 9999px;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 102, 179, 0.95);
+      box-shadow: 0 0 18px rgba(255, 0, 127, 0.8);
+    }
+
+    .cursor-ring {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 102, 179, 0.45);
+      box-shadow: 0 0 30px rgba(255, 0, 127, 0.14);
+    }
+
+    .cursor-trail {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 102, 179, 0.18);
+      box-shadow: 0 0 14px rgba(255, 0, 127, 0.16);
+    }
+
+    .quote-glow {
+      background: linear-gradient(135deg, rgba(255, 0, 127, 0.12), rgba(255, 255, 255, 0.18));
+    }
+
+    html.dark .quote-glow {
+      background: linear-gradient(135deg, rgba(255, 0, 127, 0.12), rgba(255, 255, 255, 0.03));
+    }
+
+    .nav-link.active {
+      color: #ec4899;
+    }
+
+    html.dark .nav-link.active {
+      color: #f9a8d4;
+    }
+  </style>
 </head>
 
-<body class="bg-neutral-50 text-neutral-900 dark:bg-gothic-dark dark:text-gray-100 transition-colors duration-500">
-  <div class="container mx-auto max-w-6xl px-6">
-    <header class="flex flex-col md:flex-row justify-between items-center py-6 border-b border-pink-700/50">
-      <div class="flex items-center gap-4">
-        <img src="public/pfp.jpg" alt="Lorelai Avatar"
-          class="w-16 h-16 rounded-full border-2 border-pink-700 shadow-lg" />
-        <div>
-          <h1 class="font-gothic text-3xl text-pink-500 tracking-wider">Lorelai Mei Raras</h1>
-          <nav class="flex gap-6 text-sm text-neutral-700 dark:text-gray-400 mt-1 flex-wrap">
-            <a href="#about" class="hover:text-pink-400 transition">About</a>
-            <a href="#opportunities" class="hover:text-pink-400 transition">Opportunities</a>
-            <a href="#skills" class="hover:text-pink-400 transition">Skills</a>
-            <a href="#projects" class="hover:text-pink-400 transition">Projects</a>
-            <a href="#certifications" class="hover:text-pink-400 transition">Certifications</a>
-            <a href="#contact" class="hover:text-pink-400 transition">Contact</a>
+<body class="text-gray-900 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <div class="cursor-trail"></div>
+  <div class="cursor-trail"></div>
+  <div class="cursor-trail"></div>
+  <div class="cursor-trail"></div>
+  <div class="cursor-trail"></div>
+
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="sparkle top-[8%] left-[10%] w-2 h-2"></div>
+    <div class="sparkle top-[18%] left-[82%] w-1.5 h-1.5" style="animation-delay: 1s"></div>
+    <div class="sparkle top-[30%] left-[22%] w-1.5 h-1.5" style="animation-delay: 2s"></div>
+    <div class="sparkle top-[42%] left-[72%] w-2 h-2" style="animation-delay: 1.5s"></div>
+    <div class="sparkle top-[58%] left-[15%] w-1.5 h-1.5" style="animation-delay: 2.5s"></div>
+    <div class="sparkle top-[70%] left-[88%] w-2 h-2" style="animation-delay: 0.5s"></div>
+    <div class="sparkle top-[82%] left-[35%] w-1.5 h-1.5" style="animation-delay: 3s"></div>
+    <div class="sparkle top-[88%] left-[68%] w-2 h-2" style="animation-delay: 1.8s"></div>
+    <div class="absolute -top-24 left-[-80px] w-80 h-80 rounded-full bg-pink-500/10 blur-3xl"></div>
+    <div class="absolute top-1/3 right-[-120px] w-96 h-96 rounded-full bg-pink-300/10 blur-3xl"></div>
+    <div class="absolute bottom-[-80px] left-1/3 w-80 h-80 rounded-full bg-pink-700/10 blur-3xl"></div>
+  </div>
+
+  <div class="floating-dock">
+    <div
+      class="glass border border-pink-500/20 rounded-full px-3 py-4 shadow-softpink flex flex-col gap-4 items-center">
+      <a href="mailto:lorelairaras@gmail.com"
+        class="text-pink-500 dark:text-pink-300 hover:text-pink-700 dark:hover:text-white transition text-lg"
+        aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://github.com/lorelairaras" target="_blank"
+        class="text-pink-500 dark:text-pink-300 hover:text-pink-700 dark:hover:text-white transition text-lg"
+        aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/lorelai-raras/" target="_blank"
+        class="text-pink-500 dark:text-pink-300 hover:text-pink-700 dark:hover:text-white transition text-lg"
+        aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="public/Lorelai-Raras-Resume.pdf" target="_blank"
+        class="text-pink-500 dark:text-pink-300 hover:text-pink-700 dark:hover:text-white transition text-lg"
+        aria-label="Resume">
+        <i class="fas fa-file-lines"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="container mx-auto max-w-6xl px-6 relative">
+    <header class="sticky top-0 z-50 mt-4 glass border border-pink-500/15 rounded-3xl px-6 py-4 shadow-softpink">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex items-center gap-4">
+          <img src="./public/pfp.jpg" alt="Lorelai Avatar"
+            class="w-16 h-16 rounded-full border-2 border-pink-500 shadow-glow object-cover" />
+          <div>
+            <h1 class="font-gothic text-3xl text-pink-500 dark:text-pink-400 tracking-wider">Lorelai Mei Raras</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Creative, systems-minded, and always building ✦</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 flex-wrap">
+          <nav class="flex gap-4 text-sm text-gray-600 dark:text-gray-400 flex-wrap">
+            <a href="#about" class="nav-link hover:text-pink-500 dark:hover:text-pink-300 transition">About</a>
+            <a href="#skills" class="nav-link hover:text-pink-500 dark:hover:text-pink-300 transition">Skills</a>
+            <a href="#workflow" class="nav-link hover:text-pink-500 dark:hover:text-pink-300 transition">Workflow</a>
+            <a href="#projects" class="nav-link hover:text-pink-500 dark:hover:text-pink-300 transition">Projects</a>
+            <a href="#services" class="nav-link hover:text-pink-500 dark:hover:text-pink-300 transition">Services</a>
+            <a href="#contact" class="nav-link hover:text-pink-500 dark:hover:text-pink-300 transition">Contact</a>
           </nav>
+
+          <button id="theme-toggle"
+            class="text-sm border border-pink-500/40 rounded-full px-4 py-2 hover:bg-pink-500/10 transition text-gray-800 dark:text-gray-100"
+            aria-label="Toggle theme">
+            🌙
+          </button>
         </div>
       </div>
-      <button id="theme-toggle"
-        class="mt-4 md:mt-0 text-xl border border-pink-700 rounded-full px-3 py-1 hover:bg-pink-700/20 transition">
-        🌙
-      </button>
     </header>
 
-    <section id="hero" class="mt-12 space-y-4">
-      <h2 class="font-gothic text-5xl text-pink-500 tracking-wide">Hi! I am</h2>
-      <p class="font-gothic text-4xl text-neutral-900 dark:text-gray-200">Lorelai Raras</p>
-      <div class="space-y-1 text-neutral-700 dark:text-gray-400">
-        <p>(en) Lorelai Raras</p>
-        <p>(tl) Lo-re-lai Ra-ras</p>
-        <p>(jp) ロレライ・ララス</p>
-        <p>(she/her)</p>
+    <section id="hero"
+      class="mt-10 relative hero-grid rounded-[2rem] border border-pink-500/15 glass p-8 md:p-12 shadow-softpink overflow-hidden">
+      <div class="absolute top-10 right-10 hidden md:block animate-floaty">
+        <div class="w-28 h-28 rounded-full bg-pink-500/10 blur-2xl"></div>
       </div>
 
-      <div class="flex flex-wrap gap-2 mt-3">
-        <span class="px-4 py-1 rounded-full border border-pink-700/50 text-sm text-pink-600 dark:text-pink-300">Business
-          System Analyst</span>
-        <span class="px-4 py-1 rounded-full border border-pink-700/50 text-sm text-pink-600 dark:text-pink-300">Product
-          & Project-Oriented</span>
-        <span class="px-4 py-1 rounded-full border border-pink-700/50 text-sm text-pink-600 dark:text-pink-300">Creative
-          Technologist</span>
-      </div>
-
-      <div class="flex gap-4 mt-4">
-        <button id="hire-me"
-          class="px-6 py-2 bg-pink-500 hover:bg-pink-700 text-white rounded-full transition shadow-lg flex items-center gap-2">
-          💌 Hire Me
-        </button>
-        <button id="copy-email"
-          class="px-6 py-2 border border-pink-700 text-neutral-800 dark:text-gray-100 rounded-full hover:bg-pink-700/20 transition flex items-center gap-2">
-          📋 Copy Email
-        </button>
-      </div>
-      <p id="copy-msg" class="text-green-600 dark:text-green-400 mt-2 hidden">Email copied to clipboard!</p>
-    </section>
-
-    <section id="about" class="mt-16 space-y-6">
-      <h2 class="font-gothic text-4xl text-pink-500 tracking-wide">About Me</h2>
-      <p class="text-neutral-800 dark:text-gray-300 text-lg leading-relaxed">
-        I’m <strong>Lorelai Raras</strong>, a BS Information Technology graduate and aspiring <strong>Business System
-          Analyst</strong> with a strong
-        interest in web development, product thinking, creative design, and systems improvement. I enjoy building
-        solutions that connect business
-        needs with practical technical outcomes.
-      </p>
-      <p class="text-neutral-800 dark:text-gray-300 text-lg leading-relaxed">
-        Currently, I’ve been <strong>vibe coding and contributing to real company projects</strong>, while continuously
-        learning more about
-        workflows, documentation, user-centered solutions, and cross-functional collaboration. I’m also exploring
-        design, project management,
-        product development, business analysis, and data-related work to expand the ways I can contribute.
-      </p>
-      <p class="text-neutral-800 dark:text-gray-300 text-lg leading-relaxed">
-        I value creativity, adaptability, and clear communication. Whether through development, documentation, research,
-        or design support, I aim
-        to create work that is thoughtful, useful, and impactful.
-      </p>
-    </section>
-
-    <section id="opportunities" class="mt-16">
-      <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Open to Opportunities</h3>
-      <div class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg">
-        <p class="text-neutral-800 dark:text-gray-300 leading-relaxed mb-4">
-          I’m open to roles and projects where my technical, analytical, and creative skills can contribute
-          meaningfully.
-        </p>
-        <div class="grid md:grid-cols-2 gap-6 text-neutral-700 dark:text-gray-300">
-          <div>
-            <h4 class="text-pink-500 font-semibold mb-2">Career Paths I Want to Pursue</h4>
-            <ul class="space-y-2">
-              <li>• Business System Analyst</li>
-              <li>• Product Development / Product Support</li>
-              <li>• Project Coordination / Project Management Support</li>
-              <li>• Data Analyst</li>
-              <li>• Data Scientist</li>
-              <li>• Research-related Work</li>
-            </ul>
+      <div class="grid lg:grid-cols-[1.25fr_0.75fr] gap-10 items-center">
+        <div class="space-y-6">
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="badge-glow px-4 py-1 rounded-full border border-pink-500/25 text-xs uppercase tracking-[0.2em] text-pink-700 dark:text-pink-200">Business
+              System Analyst</span>
+            <span
+              class="badge-glow px-4 py-1 rounded-full border border-pink-500/25 text-xs uppercase tracking-[0.2em] text-pink-700 dark:text-pink-200">Creative
+              Analyst</span>
+            <span
+              class="badge-glow px-4 py-1 rounded-full border border-pink-500/25 text-xs uppercase tracking-[0.2em] text-pink-700 dark:text-pink-200">Vibe
+              Coding Era</span>
           </div>
+
           <div>
-            <h4 class="text-pink-500 font-semibold mb-2">Other Roles I’m Open To</h4>
-            <ul class="space-y-2">
-              <li>• Virtual Assistant</li>
-              <li>• Graphic Design VA</li>
-              <li>• Data Annotator</li>
-              <li>• Volunteer Work within My Skill Set</li>
-              <li>• Opportunities related to animals or food</li>
-              <li>• Hybrid, Remote, or On-site Work</li>
-            </ul>
+            <p class="text-pink-600 dark:text-pink-300 uppercase tracking-[0.4em] text-xs mb-3">Hello, I’m</p>
+            <h2 class="font-gothic text-5xl md:text-7xl leading-none text-gradient">Lorelai Raras</h2>
+            <p class="mt-4 text-lg md:text-2xl text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">
+              I build at the intersection of
+              <span class="text-pink-600 dark:text-pink-300 font-semibold">systems</span>,
+              <span class="text-pink-600 dark:text-pink-300 font-semibold">creativity</span>,
+              <span class="text-pink-600 dark:text-pink-300 font-semibold">documentation</span>, and
+              <span class="text-pink-600 dark:text-pink-300 font-semibold">modern tech workflows</span>.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <span
+              class="px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-700 dark:text-pink-200 text-sm">vibe
+              coding</span>
+            <span
+              class="px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-700 dark:text-pink-200 text-sm">cat
+              energy</span>
+            <span
+              class="px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-700 dark:text-pink-200 text-sm">system
+              thinker</span>
+            <span
+              class="px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-700 dark:text-pink-200 text-sm">creative
+              analyst</span>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-400 max-w-2xl">
+            <div class="rounded-2xl border border-pink-500/15 bg-white/40 dark:bg-black/20 p-4">
+              <p class="text-pink-600 dark:text-pink-300 mb-1">Open to</p>
+              <p>Hybrid, Remote, On-site, and Volunteer opportunities</p>
+            </div>
+            <div class="rounded-2xl border border-pink-500/15 bg-white/40 dark:bg-black/20 p-4">
+              <p class="text-pink-600 dark:text-pink-300 mb-1">Interested in</p>
+              <p>Business Systems, Product, Design Support, Research, Data, and Creative Work</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <button id="hire-me"
+              class="px-6 py-3 bg-pink-500 hover:bg-pink-700 text-white rounded-full transition shadow-glow flex items-center gap-2 animate-pulseGlow">
+              💌 Let’s Work Together
+            </button>
+            <button id="copy-email"
+              class="px-6 py-3 border border-pink-500/40 text-gray-900 dark:text-gray-100 rounded-full hover:bg-pink-500/10 transition flex items-center gap-2">
+              📋 Copy Email
+            </button>
+            <a href="./public/Lorelai-Raras-Resume.pdf" target="_blank"
+              class="px-6 py-3 border border-pink-500/40 text-gray-900 dark:text-gray-100 rounded-full hover:bg-pink-500/10 transition flex items-center gap-2">
+              ✦ View Resume
+            </a>
+          </div>
+
+          <p id="copy-msg" class="text-green-600 dark:text-green-400 hidden">Email copied to clipboard!</p>
+        </div>
+
+        <div class="relative">
+          <div
+            class="rounded-[2rem] border border-pink-500/20 bg-gradient-to-b from-pink-500/10 to-transparent p-6 shadow-softpink">
+            <img src="./public/pfp.jpg" alt="Lorelai portrait"
+              class="w-full h-[380px] object-cover rounded-[1.5rem] border border-pink-500/20 shadow-glow" />
+            <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
+              <div class="rounded-2xl bg-white/40 dark:bg-black/30 border border-pink-500/15 p-4">
+                <p class="text-pink-600 dark:text-pink-300">Pronouns</p>
+                <p class="text-gray-700 dark:text-gray-300 mt-1">she/her</p>
+              </div>
+              <div class="rounded-2xl bg-white/40 dark:bg-black/30 border border-pink-500/15 p-4">
+                <p class="text-pink-600 dark:text-pink-300">Style</p>
+                <p class="text-gray-700 dark:text-gray-300 mt-1">gothic pink ✦ soft chaos</p>
+              </div>
+              <div class="rounded-2xl bg-white/40 dark:bg-black/30 border border-pink-500/15 p-4">
+                <p class="text-pink-600 dark:text-pink-300">Current era</p>
+                <p class="text-gray-700 dark:text-gray-300 mt-1">learning, building, exploring</p>
+              </div>
+              <div class="rounded-2xl bg-white/40 dark:bg-black/30 border border-pink-500/15 p-4">
+                <p class="text-pink-600 dark:text-pink-300">Energy</p>
+                <p class="text-gray-700 dark:text-gray-300 mt-1">creative + analytical</p>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div class="section-divider mt-10">
+        <span>✦ ☾ ✦</span>
+      </div>
+    </section>
+
+    <section id="quote" class="mt-16">
+      <div class="quote-glow hover-card glass border border-pink-500/15 rounded-[2rem] p-8 shadow-softpink text-center">
+        <p class="text-pink-700 dark:text-pink-200 text-xl md:text-2xl leading-relaxed italic">
+          “I create thoughtful work where systems, creativity, and clarity meet.”
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 mt-3">— Lorelai Raras</p>
+      </div>
+    </section>
+
+    <section id="about" class="mt-16">
+      <h2 class="font-gothic text-4xl text-pink-500 dark:text-pink-400 tracking-wide mb-6">About Me</h2>
+      <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-6">
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-7 shadow-softpink">
+          <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-5">
+            I’m <strong class="text-pink-600 dark:text-pink-300">Lorelai Raras</strong>, a BS Information Technology
+            graduate and aspiring
+            <strong class="text-pink-600 dark:text-pink-300">Business System Analyst</strong> with strong interest in
+            web development,
+            product thinking, creative design, and systems improvement.
+          </p>
+          <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-5">
+            I’ve been <strong class="text-pink-600 dark:text-pink-300">vibe coding and contributing to real company
+              projects</strong> while
+            building my understanding of workflows, documentation, user-centered solutions, collaboration, and practical
+            problem-solving.
+          </p>
+          <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+            I’m also exploring opportunities in <strong class="text-pink-600 dark:text-pink-300">design, project
+              support, product
+              development, research, data work, and creative roles</strong> where I can combine technical ability with
+            creativity and
+            thoughtful communication.
+          </p>
+        </div>
+
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-7 shadow-softpink">
+          <h3 class="text-pink-600 dark:text-pink-300 font-semibold text-lg mb-4">Now Playing / Current Obsessions</h3>
+          <div class="space-y-4">
+            <div class="rounded-2xl border border-pink-500/15 bg-white/40 dark:bg-black/25 p-4">
+              <p class="text-xs uppercase tracking-[0.25em] text-pink-600 dark:text-pink-300 mb-2">Song vibe</p>
+              <p class="text-gray-800 dark:text-gray-200 font-medium">Dark pop, dreamy playlists, coding with cinematic
+                energy</p>
+            </div>
+            <div class="rounded-2xl border border-pink-500/15 bg-white/40 dark:bg-black/25 p-4">
+              <p class="text-xs uppercase tracking-[0.25em] text-pink-600 dark:text-pink-300 mb-2">Tools</p>
+              <p class="text-gray-700 dark:text-gray-300">ChatGPT, Claude, React, Figma, Notion, Power BI</p>
+            </div>
+            <div class="rounded-2xl border border-pink-500/15 bg-white/40 dark:bg-black/25 p-4">
+              <p class="text-xs uppercase tracking-[0.25em] text-pink-600 dark:text-pink-300 mb-2">Current interests</p>
+              <p class="text-gray-700 dark:text-gray-300">Business systems, product thinking, design support, research,
+                cats, animals, food ideas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-divider">
+        <span>♡ ✦ ♡</span>
       </div>
     </section>
 
     <section id="skills" class="mt-16">
-      <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Skills</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="flex items-center gap-2 text-pink-500 font-gothic text-2xl mb-4"><i class="fas fa-code"></i>
-            Development & Data</h4>
-          <ul class="space-y-2 text-neutral-700 dark:text-gray-300">
-            <li class="flex items-center gap-2"><i class="fab fa-js text-yellow-400"></i> JavaScript</li>
-            <li class="flex items-center gap-2"><i class="fas fa-code text-blue-400"></i> TypeScript</li>
-            <li class="flex items-center gap-2"><i class="fab fa-python text-blue-400"></i> Python</li>
-            <li class="flex items-center gap-2"><i class="fas fa-database text-pink-500"></i> SQL / MySQL</li>
-            <li class="flex items-center gap-2"><i class="fas fa-chart-line text-green-500"></i> Power BI</li>
-            <li class="flex items-center gap-2"><i class="fas fa-brain text-purple-400"></i> AI / Machine Learning</li>
+      <h3 class="font-gothic text-4xl text-pink-500 dark:text-pink-400 tracking-wide mb-6">Skills & Favorite Tools</h3>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+        <div class="tool-icon glass border border-pink-500/15 rounded-3xl p-5 text-center">
+          <i class="fab fa-react text-3xl text-cyan-400 mb-3"></i>
+          <p class="text-sm text-gray-800 dark:text-gray-200">React</p>
+        </div>
+        <div class="tool-icon glass border border-pink-500/15 rounded-3xl p-5 text-center">
+          <i class="fab fa-js text-3xl text-yellow-400 mb-3"></i>
+          <p class="text-sm text-gray-800 dark:text-gray-200">JavaScript</p>
+        </div>
+        <div class="tool-icon glass border border-pink-500/15 rounded-3xl p-5 text-center">
+          <i class="fab fa-python text-3xl text-blue-400 mb-3"></i>
+          <p class="text-sm text-gray-800 dark:text-gray-200">Python</p>
+        </div>
+        <div class="tool-icon glass border border-pink-500/15 rounded-3xl p-5 text-center">
+          <i class="fab fa-figma text-3xl text-pink-400 mb-3"></i>
+          <p class="text-sm text-gray-800 dark:text-gray-200">Figma</p>
+        </div>
+        <div class="tool-icon glass border border-pink-500/15 rounded-3xl p-5 text-center">
+          <i class="fas fa-chart-line text-3xl text-green-400 mb-3"></i>
+          <p class="text-sm text-gray-800 dark:text-gray-200">Power BI</p>
+        </div>
+        <div class="tool-icon glass border border-pink-500/15 rounded-3xl p-5 text-center">
+          <i class="fas fa-robot text-3xl text-purple-300 mb-3"></i>
+          <p class="text-sm text-gray-800 dark:text-gray-200">AI Tools</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink animate-floaty">
+          <h4 class="flex items-center gap-2 text-pink-600 dark:text-pink-300 font-gothic text-2xl mb-4">
+            <i class="fas fa-code"></i> Development & Data
+          </h4>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>React</li>
+            <li>HTML / CSS</li>
+            <li>Python</li>
+            <li>SQL / MySQL</li>
+            <li>Power BI</li>
+            <li>AI / Machine Learning</li>
           </ul>
         </div>
 
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="flex items-center gap-2 text-pink-500 font-gothic text-2xl mb-4"><i class="fas fa-layer-group"></i>
-            Systems & Product</h4>
-          <ul class="space-y-2 text-neutral-700 dark:text-gray-300">
-            <li class="flex items-center gap-2"><i class="fab fa-react text-cyan-500"></i> React</li>
-            <li class="flex items-center gap-2"><i class="fas fa-sitemap text-pink-500"></i> Business Systems Analysis
-            </li>
-            <li class="flex items-center gap-2"><i class="fas fa-diagram-project text-purple-400"></i> Product
-              Development</li>
-            <li class="flex items-center gap-2"><i class="fas fa-users text-cyan-500"></i> Agile / Scrum</li>
-            <li class="flex items-center gap-2"><i class="fas fa-file-lines text-yellow-400"></i> Documentation &
-              Workflow Mapping</li>
-            <li class="flex items-center gap-2"><i class="fas fa-magnifying-glass-chart text-green-500"></i> Research &
-              Analysis</li>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink animate-floaty"
+          style="animation-delay: 0.6s">
+          <h4 class="flex items-center gap-2 text-pink-600 dark:text-pink-300 font-gothic text-2xl mb-4">
+            <i class="fas fa-diagram-project"></i> Systems & Workflow
+          </h4>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li>Business Systems Analysis</li>
+            <li>Product Development</li>
+            <li>Agile / Scrum</li>
+            <li>Workflow Mapping</li>
+            <li>Requirement Gathering</li>
+            <li>Research & Analysis</li>
+            <li>Documentation</li>
+            <li>Process Improvement</li>
           </ul>
         </div>
 
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="flex items-center gap-2 text-pink-500 font-gothic text-2xl mb-4"><i
-              class="fas fa-wand-magic-sparkles"></i> Tools & AI</h4>
-          <ul class="space-y-2 text-neutral-700 dark:text-gray-300">
-            <li class="flex items-center gap-2"><i class="fab fa-git-alt text-orange-400"></i> Git / GitHub / Bitbucket
-            </li>
-            <li class="flex items-center gap-2"><i class="fab fa-figma text-pink-500"></i> Figma / Canva</li>
-            <li class="flex items-center gap-2"><i class="fas fa-chart-area text-green-500"></i> Lucidchart / Miro</li>
-            <li class="flex items-center gap-2"><i class="fas fa-tasks text-cyan-500"></i> Notion / Jira / Confluence /
-              ClickUp</li>
-            <li class="flex items-center gap-2"><i class="fas fa-robot text-purple-400"></i> ChatGPT / Claude / Gemini
-            </li>
-            <li class="flex items-center gap-2"><i class="fas fa-sparkles text-yellow-400"></i> Copilot / Perplexity AI
-              / Notion AI</li>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink animate-floaty"
+          style="animation-delay: 1.2s">
+          <h4 class="flex items-center gap-2 text-pink-600 dark:text-pink-300 font-gothic text-2xl mb-4">
+            <i class="fas fa-wand-magic-sparkles"></i> Tools & AI
+          </h4>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li>Git / GitHub / Bitbucket</li>
+            <li>Figma / Canva</li>
+            <li>Lucidchart / Miro</li>
+            <li>Notion / Jira / Confluence / ClickUp</li>
+            <li>Microsoft Office / Google Workspace</li>
+            <li>ChatGPT / Claude / Gemini</li>
+            <li>Microsoft Copilot / Perplexity AI</li>
+            <li>Notion AI / AI-assisted workflows</li>
           </ul>
         </div>
+      </div>
+      <div class="section-divider">
+        <span>✦ 🦇 ✦</span>
+      </div>
+    </section>
+
+    <section id="workflow" class="mt-16">
+      <h3 class="font-gothic text-4xl text-pink-500 dark:text-pink-400 tracking-wide mb-6">My Workflow</h3>
+      <div class="grid md:grid-cols-4 gap-5">
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <p class="text-pink-600 dark:text-pink-300 text-sm uppercase tracking-[0.25em] mb-3">01</p>
+          <h4 class="text-xl text-gray-900 dark:text-gray-100 mb-2">Research</h4>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Understand the problem, gather context, ask the right
+            questions, and identify needs.</p>
+        </div>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <p class="text-pink-600 dark:text-pink-300 text-sm uppercase tracking-[0.25em] mb-3">02</p>
+          <h4 class="text-xl text-gray-900 dark:text-gray-100 mb-2">Design</h4>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Sketch ideas, visualize user flows, and shape practical,
+            user-friendly solutions.</p>
+        </div>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <p class="text-pink-600 dark:text-pink-300 text-sm uppercase tracking-[0.25em] mb-3">03</p>
+          <h4 class="text-xl text-gray-900 dark:text-gray-100 mb-2">Documentation</h4>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Translate insights into workflows, notes, requirements,
+            and clear team communication.</p>
+        </div>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <p class="text-pink-600 dark:text-pink-300 text-sm uppercase tracking-[0.25em] mb-3">04</p>
+          <h4 class="text-xl text-gray-900 dark:text-gray-100 mb-2">Build</h4>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Support implementation, vibe code, iterate, and refine
+            based on real-world use.</p>
+        </div>
+      </div>
+      <div class="section-divider">
+        <span>☾ ⋆ ☾</span>
       </div>
     </section>
 
     <section id="projects" class="mt-16">
-      <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Projects</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="text-pink-500 font-gothic text-xl mb-2">🎫 Ticket Monitoring System</h4>
-          <p class="text-neutral-800 dark:text-gray-300 mb-2">
+      <h3 class="font-gothic text-4xl text-pink-500 dark:text-pink-400 tracking-wide mb-6">Projects</h3>
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <div class="flex items-center justify-between gap-4 mb-3">
+            <h4 class="text-pink-600 dark:text-pink-300 font-gothic text-2xl">🎫 Ticket Monitoring System</h4>
+            <span
+              class="px-3 py-1 bg-pink-500/15 text-pink-700 dark:text-pink-200 rounded-full text-xs uppercase tracking-wider border border-pink-500/20">
+              Ongoing
+            </span>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
             A centralized platform for ticket allocation, sales tracking, and remittance logging designed to support
-            event management workflows.
+            event workflows.
           </p>
-          <p class="text-neutral-700 dark:text-gray-500 text-sm mb-4">
-            <strong>Focus:</strong> Workflow improvement, documentation, and system support<br />
-            <strong>Contribution:</strong> Research, identifying system functions, and process-related support<br />
-            <strong>Goal:</strong> Better organization, monitoring, and adoption
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Focused on research, workflow improvement, system functions, documentation, and support for adoption and
+            usability.
           </p>
-          <div class="flex flex-wrap gap-2 text-neutral-700 dark:text-gray-400 text-sm">
-            <span>React</span> · <span>Tailwind CSS</span> · <span>JavaScript</span> · <span>MySQL</span> ·
-            <span>Documentation</span> ·
-            <span>Workflow Analysis</span>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <span class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">React</span>
+            <span class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">Tailwind
+              CSS</span>
             <span
-              class="px-3 py-1 bg-pink-100 dark:bg-pink-500/20 text-pink-600 dark:text-pink-400 rounded-full text-xs uppercase font-semibold">
-              Ongoing
-            </span>
+              class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">JavaScript</span>
+            <span class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">MySQL</span>
+            <span
+              class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">Documentation</span>
           </div>
         </div>
 
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="text-pink-500 font-gothic text-xl mb-2">Frontend Mentor Challenges</h4>
-          <p class="text-neutral-800 dark:text-gray-300 mb-2">
-            A collection of realistic front-end projects used to strengthen my skills in UI implementation, responsive
-            layouts, and clean
-            component-based development.
-          </p>
-          <div class="flex flex-wrap gap-2 text-neutral-700 dark:text-gray-400 text-sm">
-            <span>HTML</span> · <span>CSS</span> · <span>JavaScript</span> · <span>Tailwind CSS</span> ·
-            <span>React</span> · <span>Vite</span>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <div class="flex items-center justify-between gap-4 mb-3">
+            <h4 class="text-pink-600 dark:text-pink-300 font-gothic text-2xl">💻 Frontend Mentor Challenges</h4>
             <span
-              class="px-3 py-1 bg-pink-100 dark:bg-pink-500/20 text-pink-600 dark:text-pink-400 rounded-full text-xs uppercase font-semibold">
+              class="px-3 py-1 bg-pink-500/15 text-pink-700 dark:text-pink-200 rounded-full text-xs uppercase tracking-wider border border-pink-500/20">
               Ongoing
             </span>
           </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            A collection of front-end projects that help me practice responsive layouts, component structure, and clean
+            UI implementation.
+          </p>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            These projects help sharpen both my technical skills and my visual design instincts.
+          </p>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <span class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">HTML</span>
+            <span class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">CSS</span>
+            <span
+              class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">JavaScript</span>
+            <span class="px-3 py-1 rounded-full bg-pink-500/10 dark:bg-black/30 border border-pink-500/15">React</span>
+          </div>
         </div>
+      </div>
+      <div class="section-divider">
+        <span>♡ ☾ ♡</span>
       </div>
     </section>
 
-    <section id="certifications" class="mt-16">
-      <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Certifications</h3>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="text-pink-500 font-gothic text-xl mb-2">IBM Introduction to Cloud</h4>
-          <p class="text-neutral-800 dark:text-gray-300 text-sm mb-2">Cloud computing, IaaS/PaaS/SaaS, DevOps, and
-            security.</p>
-          <span class="text-neutral-600 dark:text-gray-400 text-sm">IBM Skills Network</span>
+    <section id="services" class="mt-16">
+      <h3 class="font-gothic text-4xl text-pink-500 dark:text-pink-400 tracking-wide mb-6">What I Can Help With</h3>
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <h4 class="text-pink-600 dark:text-pink-300 text-xl mb-3">Research & Analysis</h4>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Research support, information gathering, summaries, and
+            practical insights for projects and workflows.</p>
         </div>
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="text-pink-500 font-gothic text-xl mb-2">IBM Data Privacy Fundamentals</h4>
-          <p class="text-neutral-800 dark:text-gray-300 text-sm mb-2">Data protection, compliance, and breach analysis.
-          </p>
-          <span class="text-neutral-600 dark:text-gray-400 text-sm">IBM Skills Network</span>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <h4 class="text-pink-600 dark:text-pink-300 text-xl mb-3">Documentation & Systems</h4>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Process documentation, workflow mapping, system notes, and
+            business/system support tasks.</p>
         </div>
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="text-pink-500 font-gothic text-xl mb-2">IBM Data Science 101</h4>
-          <p class="text-neutral-800 dark:text-gray-300 text-sm mb-2">Intro to data science, R/Python, and applications.
-          </p>
-          <span class="text-neutral-600 dark:text-gray-400 text-sm">IBM Skills Network</span>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <h4 class="text-pink-600 dark:text-pink-300 text-xl mb-3">Creative & Design Support</h4>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Simple design tasks, layouts, Canva work, Figma support,
+            and visually organized presentation materials.</p>
         </div>
-        <div
-          class="bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition hover:scale-105">
-          <h4 class="text-pink-500 font-gothic text-xl mb-2">Google Analytics Certification</h4>
-          <p class="text-neutral-800 dark:text-gray-300 text-sm mb-2">GA4 tracking, setup, and performance insights.</p>
-          <span class="text-neutral-600 dark:text-gray-400 text-sm">Google Skillshop (2025–2026)</span>
+        <div class="hover-card glass border border-pink-500/15 rounded-[2rem] p-6 shadow-softpink">
+          <h4 class="text-pink-600 dark:text-pink-300 text-xl mb-3">Frontend & Admin Support</h4>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Frontend practice projects, virtual assistance, data
+            annotation, and organized support work within my skill set.</p>
         </div>
+      </div>
+      <div class="section-divider">
+        <span>✦ ♡ ✦</span>
       </div>
     </section>
 
-    <section id="contact" class="mt-16">
-      <h3 class="font-gothic text-3xl text-pink-500 mb-6 tracking-wide">Contact</h3>
-      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <section id="resume-cta" class="mt-16">
+      <div
+        class="hover-card glass border border-pink-500/20 rounded-[2rem] p-8 shadow-softpink flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div>
+          <p class="text-pink-600 dark:text-pink-300 uppercase tracking-[0.25em] text-xs mb-2">Resume</p>
+          <h3 class="text-2xl md:text-3xl text-gray-900 dark:text-gray-100 mb-2">Want a closer look at my experience and
+            skills?</h3>
+          <p class="text-gray-600 dark:text-gray-400">View my resume for my background in business systems, development,
+            documentation, and creative support work.</p>
+        </div>
+        <a href="./public/Lorelai-Raras-Resume.pdf" target="_blank"
+          class="px-6 py-3 bg-pink-500 hover:bg-pink-700 text-white rounded-full transition shadow-glow flex items-center gap-2 whitespace-nowrap">
+          ✦ Open Resume
+        </a>
+      </div>
+    </section>
+
+    <section id="contact" class="mt-16 mb-16">
+      <h3 class="font-gothic text-4xl text-pink-500 dark:text-pink-400 tracking-wide mb-6">Contact</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <a href="mailto:lorelairaras@gmail.com"
-          class="flex items-center gap-2 justify-center bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-4 hover:bg-neutral-100 dark:hover:bg-[#16161e] transition shadow-lg hover:scale-105">
-          <i class="fas fa-envelope text-pink-500"></i> Email
+          class="hover-card glass border border-pink-500/15 rounded-[2rem] p-5 flex items-center justify-center gap-3 text-gray-800 dark:text-gray-200 shadow-softpink">
+          <i class="fas fa-envelope text-pink-500 dark:text-pink-400"></i> Email
         </a>
         <a href="tel:+639622558343"
-          class="flex items-center gap-2 justify-center bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-4 hover:bg-neutral-100 dark:hover:bg-[#16161e] transition shadow-lg hover:scale-105">
-          <i class="fas fa-phone text-pink-500"></i> Call Me
+          class="hover-card glass border border-pink-500/15 rounded-[2rem] p-5 flex items-center justify-center gap-3 text-gray-800 dark:text-gray-200 shadow-softpink">
+          <i class="fas fa-phone text-pink-500 dark:text-pink-400"></i> Call Me
         </a>
         <a href="https://github.com/lorelairaras" target="_blank"
-          class="flex items-center gap-2 justify-center bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-4 hover:bg-neutral-100 dark:hover:bg-[#16161e] transition shadow-lg hover:scale-105">
-          <i class="fab fa-github text-pink-500"></i> GitHub
+          class="hover-card glass border border-pink-500/15 rounded-[2rem] p-5 flex items-center justify-center gap-3 text-gray-800 dark:text-gray-200 shadow-softpink">
+          <i class="fab fa-github text-pink-500 dark:text-pink-400"></i> GitHub
         </a>
         <a href="https://linkedin.com/in/lorelai-raras/" target="_blank"
-          class="flex items-center gap-2 justify-center bg-white dark:bg-[#111218] border border-pink-700/50 rounded-3xl p-4 hover:bg-neutral-100 dark:hover:bg-[#16161e] transition shadow-lg hover:scale-105">
-          <i class="fab fa-linkedin text-pink-500"></i> LinkedIn
+          class="hover-card glass border border-pink-500/15 rounded-[2rem] p-5 flex items-center justify-center gap-3 text-gray-800 dark:text-gray-200 shadow-softpink">
+          <i class="fab fa-linkedin text-pink-500 dark:text-pink-400"></i> LinkedIn
         </a>
       </div>
     </section>
 
-    <footer class="border-t border-pink-700/50 text-center py-6 text-sm text-neutral-600 dark:text-gray-400 mt-16">©
-      2025 Lorelai Mei Raras</footer>
+    <footer class="border-t border-pink-500/15 text-center py-8 text-sm text-gray-600 dark:text-gray-500">
+      © 2026 Lorelai Mei Raras ✦
+    </footer>
   </div>
+
   <script src="./src/main.js"></script>
 </body>
 
